@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "race",
+      "fieldType": "Race",
+      "fieldValues": "HUMAN,DWARF,ELF,WITCHER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "profession",
+      "fieldType": "Profession",
+      "fieldValues": "CRAFTSMAN,BARD,CRIMINAL,DOCTOR,MANATARMS,MAGE,MERCHANT,PRIEST,WITCHER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "campaign",
+      "otherEntityName": "campaign",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Player",
+  "changelogDate": "20211220192129"
+}

@@ -1,0 +1,11 @@
+{
+  "witcherhelperApp": {
+    "Race": {
+      "null": "",
+      "HUMAN": "Humain",
+      "DWARF": "Nain",
+      "ELF": "Elfe",
+      "WITCHER": "Sorceleur"
+    }
+  }
+}

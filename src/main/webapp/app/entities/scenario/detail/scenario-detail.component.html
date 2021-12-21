@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="scenario">
+      <h2 data-cy="scenarioDetailsHeading"><span jhiTranslate="witcherhelperApp.scenario.detail.title">Scenario</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ scenario.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.title">Title</span></dt>
+        <dd>
+          <span>{{ scenario.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.description">Description</span></dt>
+        <dd>
+          <span>{{ scenario.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.mapCoords">Map Coords</span></dt>
+        <dd>
+          <span>{{ scenario.mapCoords }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.date">Date</span></dt>
+        <dd>
+          <span>{{ scenario.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.mapIcon">Map Icon</span></dt>
+        <dd>
+          <rpg-awesome-icon [name]="scenario.mapIcon!"></rpg-awesome-icon>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.campaign">Campaign</span></dt>
+        <dd>
+          <div *ngIf="scenario.campaign">
+            <a [routerLink]="['/campaign', scenario.campaign?.id, 'view']">{{ scenario.campaign?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.scenario.players">Players</span></dt>
+        <dd>
+          <span *ngFor="let players of scenario.players; let last = last">
+            <a [routerLink]="['/player', players?.id, 'view']">{{ players.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/scenario', scenario.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

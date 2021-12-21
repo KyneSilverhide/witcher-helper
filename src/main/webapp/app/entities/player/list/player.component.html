@@ -1,0 +1,117 @@
+<div>
+  <h2 id="page-heading" data-cy="PlayerHeading">
+    <span jhiTranslate="witcherhelperApp.player.home.title">Players</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="witcherhelperApp.player.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-player"
+        [routerLink]="['/player/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="witcherhelperApp.player.home.createLabel"> Create a new Player </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="players?.length === 0">
+    <span jhiTranslate="witcherhelperApp.player.home.notFound">No players found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="players && players.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="witcherhelperApp.player.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="race">
+            <span jhiTranslate="witcherhelperApp.player.race">Race</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="profession">
+            <span jhiTranslate="witcherhelperApp.player.profession">Profession</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="picture">
+            <span jhiTranslate="witcherhelperApp.player.picture">Picture</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="witcherhelperApp.player.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="campaign.name">
+            <span jhiTranslate="witcherhelperApp.player.campaign">Campaign</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/player', player.id, 'view']">{{ player.id }}</a>
+          </td>
+          <td>{{ player.name }}</td>
+          <td jhiTranslate="{{ 'witcherhelperApp.Race.' + player.race }}">{{ player.race }}</td>
+          <td jhiTranslate="{{ 'witcherhelperApp.Profession.' + player.profession }}">{{ player.profession }}</td>
+          <td>
+            <a *ngIf="player.picture" (click)="openFile(player.picture, player.pictureContentType)">
+              <img [src]="'data:' + player.pictureContentType + ';base64,' + player.picture" style="max-height: 30px" alt="player image" />
+            </a>
+            <span *ngIf="player.picture">{{ player.pictureContentType }}, {{ byteSize(player.picture) }}</span>
+          </td>
+          <td>{{ player.description }}</td>
+          <td>
+            <div *ngIf="player.campaign">
+              <a [routerLink]="['/campaign', player.campaign?.id, 'view']">{{ player.campaign?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/player', player.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/player', player.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(player)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="players && players.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

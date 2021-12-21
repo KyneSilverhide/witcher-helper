@@ -1,0 +1,16 @@
+{
+  "witcherhelperApp": {
+    "Profession": {
+      "null": "",
+      "CRAFTSMAN": "Artisan",
+      "BARD": "Barde",
+      "CRIMINAL": "Criminel",
+      "DOCTOR": "Docteur",
+      "MANATARMS": "Homme d'armes",
+      "MAGE": "Mage",
+      "MERCHANT": "Marchand",
+      "PRIEST": "Prêtre",
+      "WITCHER": "Sorceleur"
+    }
+  }
+}

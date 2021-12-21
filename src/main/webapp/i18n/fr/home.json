@@ -1,0 +1,10 @@
+{
+  "home": {
+    "title": "Bienvenue sur l'utilitaire de campagne Witcher",
+    "subtitle": "Ce site regroupe tout un ensemble d'outils pour illustrer votre/vos campagne(s)",
+    "logged": {
+      "message": "Vous êtes connecté en tant que \"{{username}}\"."
+    },
+    "question": "Si vous avez des questions à propos de JHipster :"
+  }
+}

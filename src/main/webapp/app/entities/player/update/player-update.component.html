@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-player-heading" data-cy="PlayerCreateUpdateHeading" jhiTranslate="witcherhelperApp.player.home.createOrEditLabel">
+        Create or edit a Player
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.race" for="field_race">Race</label>
+          <select class="form-control" name="race" formControlName="race" id="field_race" data-cy="race">
+            <option [ngValue]="null">{{ 'witcherhelperApp.Race.null' | translate }}</option>
+            <option *ngFor="let race of raceValues" [value]="race">{{ 'witcherhelperApp.Race.' + race | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('race')!.invalid && (editForm.get('race')!.dirty || editForm.get('race')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('race')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.profession" for="field_profession">Profession</label>
+          <select class="form-control" name="profession" formControlName="profession" id="field_profession" data-cy="profession">
+            <option [ngValue]="null">{{ 'witcherhelperApp.Profession.null' | translate }}</option>
+            <option *ngFor="let profession of professionValues" [value]="profession">
+              {{ 'witcherhelperApp.Profession.' + profession | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('profession')!.invalid && (editForm.get('profession')!.dirty || editForm.get('profession')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profession')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.picture" for="field_picture">Picture</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('pictureContentType')!.value + ';base64,' + editForm.get('picture')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('picture')!.value"
+              alt="player image"
+            />
+            <div *ngIf="editForm.get('picture')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left">{{ editForm.get('pictureContentType')!.value }}, {{ byteSize(editForm.get('picture')!.value) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('picture', 'pictureContentType', 'file_picture')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_picture"
+              data-cy="picture"
+              (change)="setFileData($event, 'picture', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="picture" id="field_picture" data-cy="picture" formControlName="picture" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="pictureContentType"
+            id="field_pictureContentType"
+            formControlName="pictureContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.description" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.campaign" for="field_campaign">Campaign</label>
+          <select class="form-control" id="field_campaign" data-cy="campaign" name="campaign" formControlName="campaign">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="campaignOption.id === editForm.get('campaign')!.value?.id ? editForm.get('campaign')!.value : campaignOption"
+              *ngFor="let campaignOption of campaignsSharedCollection; trackBy: trackCampaignById"
+            >
+              {{ campaignOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

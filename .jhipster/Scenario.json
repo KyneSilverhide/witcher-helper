@@ -1,0 +1,51 @@
+{
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "mapCoords",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "mapIcon",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "campaign",
+      "otherEntityName": "campaign",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipName": "players",
+      "otherEntityName": "player",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "name",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "scenarios"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Scenario",
+  "changelogDate": "20211221151054"
+}

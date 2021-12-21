@@ -1,0 +1,30 @@
+{
+  "witcherhelperApp": {
+    "scenario": {
+      "home": {
+        "title": "Scenarios",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Scenario",
+        "createOrEditLabel": "Créer ou éditer un Scenario",
+        "notFound": "Aucun Scenario trouvé"
+      },
+      "created": "Un nouveau Scenario a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Scenario avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Scenario avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Scenario {{ id }} ?"
+      },
+      "detail": {
+        "title": "Scenario"
+      },
+      "id": "ID",
+      "title": "Titre",
+      "description": "Description",
+      "mapCoords": "Coordonnées carte",
+      "date": "Date",
+      "mapIcon": "Icône",
+      "campaign": "Campagne",
+      "players": "Joueurs"
+    }
+  }
+}

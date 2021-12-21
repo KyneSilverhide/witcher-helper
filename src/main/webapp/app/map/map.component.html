@@ -1,0 +1,28 @@
+<div class="row">
+  <div *ngIf="!selectedCampaign">
+    <h1 jhiTranslate="witcherhelperApp.campaign.home.title">Campaigns</h1>
+    <button *ngFor="let campaign of campaigns" type="button" class="btn btn-primary btn-lg" (click)="selectCampaign(campaign)">
+      {{ campaign.name }}
+    </button>
+  </div>
+  <rpg-awesome-icon name="ankh"></rpg-awesome-icon>
+
+  <div class="col-md-12 col-lg-6">
+    <div id="map" *ngIf="selectedCampaign"></div>
+  </div>
+
+  <div class="col-md-12 col-lg-6">
+    <p-timeline [value]="scenarios" align="alternate">
+      <ng-template pTemplate="marker" let-event>
+        <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+          <fa-icon icon="map-marker-alt" size="2x"></fa-icon>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event>
+        <p-card [header]="event.title" [subheader]="event.date">
+          <pre>{{ event.description }}</pre>
+        </p-card>
+      </ng-template>
+    </p-timeline>
+  </div>
+</div>

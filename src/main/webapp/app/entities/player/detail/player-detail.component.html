@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="player">
+      <h2 data-cy="playerDetailsHeading"><span jhiTranslate="witcherhelperApp.player.detail.title">Player</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ player.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.name">Name</span></dt>
+        <dd>
+          <span>{{ player.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.race">Race</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'witcherhelperApp.Race.' + player.race }}">{{ player.race }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.profession">Profession</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'witcherhelperApp.Profession.' + player.profession }}">{{ player.profession }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.picture">Picture</span></dt>
+        <dd>
+          <div *ngIf="player.picture">
+            <a (click)="openFile(player.picture, player.pictureContentType)">
+              <img [src]="'data:' + player.pictureContentType + ';base64,' + player.picture" style="max-width: 100%" alt="player image" />
+            </a>
+            {{ player.pictureContentType }}, {{ byteSize(player.picture) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.description">Description</span></dt>
+        <dd>
+          <span>{{ player.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="witcherhelperApp.player.campaign">Campaign</span></dt>
+        <dd>
+          <div *ngIf="player.campaign">
+            <a [routerLink]="['/campaign', player.campaign?.id, 'view']">{{ player.campaign?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/player', player.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
