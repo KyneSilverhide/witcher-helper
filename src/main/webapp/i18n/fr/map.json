@@ -1,5 +1,7 @@
 {
   "map": {
-    "title": "Carte de campagne"
+    "title": "Carte de campagne",
+    "clickToAdd": "Cliquez sur la carte pour ajouter un nouvel événement",
+    "addNewEvent": "Une nouvelle aventure..."
   }
 }

@@ -23,7 +23,6 @@ import { rpgIcons } from '../../../config/font-awesome-icons';
 })
 export class ScenarioUpdateComponent implements OnInit {
   isSaving = false;
-
   rpgIcons = rpgIcons;
   campaignsSharedCollection: ICampaign[] = [];
   playersSharedCollection: IPlayer[] = [];

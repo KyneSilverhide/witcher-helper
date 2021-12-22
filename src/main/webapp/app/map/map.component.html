@@ -1,28 +1,63 @@
 <div class="row">
+  <jhi-alert-error></jhi-alert-error>
+  <p-toast></p-toast>
+
   <div *ngIf="!selectedCampaign">
     <h1 jhiTranslate="witcherhelperApp.campaign.home.title">Campaigns</h1>
     <button *ngFor="let campaign of campaigns" type="button" class="btn btn-primary btn-lg" (click)="selectCampaign(campaign)">
       {{ campaign.name }}
     </button>
   </div>
-  <rpg-awesome-icon name="ankh"></rpg-awesome-icon>
+</div>
 
-  <div class="col-md-12 col-lg-6">
-    <div id="map" *ngIf="selectedCampaign"></div>
+<div class="row">
+  <div *ngIf="selectedCampaign && players.length > 0">
+    <h1>{{ selectedCampaign.name }}</h1>
+    <div class="d-flex">
+      <div *ngFor="let player of players" class="player-pic-box">
+        <ng-container *ngIf="player.picture">
+          <img
+            [src]="'data:' + player.pictureContentType + ';base64,' + player.picture"
+            class="img-thumbnail player-pic"
+            style="width: 200px; height: auto"
+            [alt]="player.name"
+          />
+          <span class="player-pic-text">{{ player.name }}</span>
+        </ng-container>
+        <ng-container *ngIf="!player.picture">
+          <img src="https://via.placeholder.com/200" class="img-thumbnail player-pic" [alt]="player.name" />
+          <span class="player-pic-text">{{ player.name }}</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-lg-7">
+    <div id="map"></div>
   </div>
 
-  <div class="col-md-12 col-lg-6">
+  <div class="col-md-12 col-lg-5">
     <p-timeline [value]="scenarios" align="alternate">
       <ng-template pTemplate="marker" let-event>
-        <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
-          <fa-icon icon="map-marker-alt" size="2x"></fa-icon>
+        <span class="custom-marker p-shadow-2">
+          <rpg-awesome-icon [name]="event.mapIcon"></rpg-awesome-icon>
         </span>
       </ng-template>
       <ng-template pTemplate="content" let-event>
-        <p-card [header]="event.title" [subheader]="event.date">
-          <pre>{{ event.description }}</pre>
+        <p-card [header]="event.title" [subheader]="(event.date! | date: 'dd/MM/yyyy') || ''">
+          <p>{{ event.description }}</p>
         </p-card>
       </ng-template>
     </p-timeline>
   </div>
 </div>
+
+<jhi-add-event-dialog
+  *ngIf="selectedCampaign"
+  [visible]="showEventPopup"
+  [scenario]="scenario"
+  (onSavedEvent)="saveEvent($event)"
+  (onClosed)="this.cancelEvent()"
+></jhi-add-event-dialog>

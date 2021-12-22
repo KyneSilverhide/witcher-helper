@@ -2,6 +2,66 @@
   height: 80vh;
 }
 
-::ng-deep .p-card-content {
+div.row {
+  margin-bottom: 25px;
+}
+
+div.player-pic-box {
   padding: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  img {
+    opacity: 1;
+    transition: 0.5s opacity;
+  }
+
+  .player-pic-text {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    color: white;
+    font-size: 1.2em;
+    left: 12px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 90%;
+  }
+}
+
+::ng-deep {
+  rpg-awesome-icon {
+    ::ng-deep svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .p-card-content {
+    padding: 0;
+    font-size: 1.1em;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .p-card {
+    .p-card-body {
+      padding: 10px;
+    }
+  }
+
+  .p-component {
+    font-family: inherit;
+  }
+
+  .custommarker,
+  .custom-marker {
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+    border: 1px solid black;
+  }
 }

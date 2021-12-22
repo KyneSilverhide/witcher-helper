@@ -29,12 +29,15 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { RpgAwesomeIconsRegistry } from '@triangular/rpg-awesome-icons';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   imports: [
     BrowserModule,
     SharedModule,
     HomeModule,
+    BrowserAnimationsModule,
     WitcherhelperAppMapModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EntityRoutingModule,
@@ -60,6 +63,7 @@ import { RpgAwesomeIconsRegistry } from '@triangular/rpg-awesome-icons';
     { provide: LOCALE_ID, useValue: 'fr' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
+    MessageService,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],

@@ -8,6 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
 import { RpgAwesomeIconsModule } from '@triangular/rpg-awesome-icons';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   exports: [
@@ -21,6 +23,8 @@ import { RpgAwesomeIconsModule } from '@triangular/rpg-awesome-icons';
     TimelineModule,
     CardModule,
     RpgAwesomeIconsModule,
+    DialogModule,
+    ToastModule,
   ],
 })
 export class SharedLibsModule {}

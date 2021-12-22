@@ -1,0 +1,78 @@
+<p-dialog header="Title" [(visible)]="visible" [breakpoints]="{ '960px': '75vw', '640px': '100vw' }" [style]="{ width: '50vw' }">
+  <ng-template pTemplate="header">
+    <span jhiTranslate="map.addNewEvent">Add new event</span>
+  </ng-template>
+  <form name="editForm" role="form" novalidate [formGroup]="editForm">
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.title" for="field_title">Title</label>
+      <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+      <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+        <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
+          This field is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.description" for="field_description">Description</label>
+      <textarea
+        class="form-control"
+        name="description"
+        id="field_description"
+        data-cy="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.date" for="field_date">Date</label>
+      <div class="input-group">
+        <input
+          id="field_date"
+          data-cy="date"
+          type="text"
+          class="form-control"
+          name="date"
+          ngbDatepicker
+          #dateDp="ngbDatepicker"
+          formControlName="date"
+        />
+        <span class="input-group-append">
+          <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.mapIcon">Map Icon</label>
+
+      <span class="mapIcons" *ngFor="let icon of rpgIcons">
+        <input type="radio" [id]="icon.name" [value]="icon.name" formControlName="mapIcon" />
+        <rpg-awesome-icon [name]="icon.name"></rpg-awesome-icon>
+      </span>
+
+      <div *ngIf="editForm.get('mapIcon')!.invalid && (editForm.get('mapIcon')!.dirty || editForm.get('mapIcon')!.touched)">
+        <small class="form-text text-danger" *ngIf="editForm.get('mapIcon')?.errors?.required" jhiTranslate="entity.validation.required">
+          This field is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label jhiTranslate="witcherhelperApp.scenario.players" for="field_players">Players</label>
+      <select class="form-control" id="field_players" data-cy="players" multiple name="players" formControlName="players">
+        <option
+          [ngValue]="getSelectedPlayer(playerOption, editForm.get('players')!.value)"
+          *ngFor="let playerOption of playersSharedCollection; trackBy: trackPlayerById"
+        >
+          {{ playerOption.name }}
+        </option>
+      </select>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn btn-secondary" jhiTranslate="entity.action.cancel" (click)="closePopup()">Cancel</button>
+    <button type="button" class="btn btn-primary" jhiTranslate="entity.action.save" (click)="saveEvent()">Save</button>
+  </ng-template>
+</p-dialog>
