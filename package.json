@@ -1,8 +1,8 @@
 {
-  "name": "witcherhelper",
+  "name": "jdrhelper",
   "version": "0.0.1-SNAPSHOT",
   "private": true,
-  "description": "Description for witcherhelper",
+  "description": "Description for jdrhelper",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",
@@ -92,6 +92,7 @@
     "bootstrap": "4.6.1",
     "bootswatch": "^5.1.3",
     "dayjs": "1.10.7",
+    "dice-typescript": "^1.6.1",
     "leaflet": "^1.7.1",
     "ngx-infinite-scroll": "10.0.1",
     "ngx-webstorage": "8.0.0",

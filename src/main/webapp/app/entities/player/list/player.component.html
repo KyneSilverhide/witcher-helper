@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="PlayerHeading">
-    <span jhiTranslate="witcherhelperApp.player.home.title">Players</span>
+    <span jhiTranslate="jdrhelperApp.player.home.title">Players</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="witcherhelperApp.player.home.refreshListLabel">Refresh List</span>
+        <span jhiTranslate="jdrhelperApp.player.home.refreshListLabel">Refresh List</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/player/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="witcherhelperApp.player.home.createLabel"> Create a new Player </span>
+        <span jhiTranslate="jdrhelperApp.player.home.createLabel"> Create a new Player </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="players?.length === 0">
-    <span jhiTranslate="witcherhelperApp.player.home.notFound">No players found</span>
+    <span jhiTranslate="jdrhelperApp.player.home.notFound">No players found</span>
   </div>
 
   <div class="table-responsive" id="entities" *ngIf="players && players.length > 0">
@@ -33,23 +33,19 @@
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
           <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="name">
-            <span jhiTranslate="witcherhelperApp.player.name">Name</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="race">
-            <span jhiTranslate="witcherhelperApp.player.race">Race</span> <fa-icon icon="sort"></fa-icon>
-          </th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="jdrhelperApp.player.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="race"><span jhiTranslate="jdrhelperApp.player.race">Race</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="profession">
-            <span jhiTranslate="witcherhelperApp.player.profession">Profession</span> <fa-icon icon="sort"></fa-icon>
+            <span jhiTranslate="jdrhelperApp.player.profession">Profession</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="picture">
-            <span jhiTranslate="witcherhelperApp.player.picture">Picture</span> <fa-icon icon="sort"></fa-icon>
+            <span jhiTranslate="jdrhelperApp.player.picture">Picture</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="description">
-            <span jhiTranslate="witcherhelperApp.player.description">Description</span> <fa-icon icon="sort"></fa-icon>
+            <span jhiTranslate="jdrhelperApp.player.description">Description</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="campaign.name">
-            <span jhiTranslate="witcherhelperApp.player.campaign">Campaign</span> <fa-icon icon="sort"></fa-icon>
+            <span jhiTranslate="jdrhelperApp.player.campaign">Campaign</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col"></th>
         </tr>
@@ -60,8 +56,8 @@
             <a [routerLink]="['/player', player.id, 'view']">{{ player.id }}</a>
           </td>
           <td>{{ player.name }}</td>
-          <td jhiTranslate="{{ 'witcherhelperApp.Race.' + player.race }}">{{ player.race }}</td>
-          <td jhiTranslate="{{ 'witcherhelperApp.Profession.' + player.profession }}">{{ player.profession }}</td>
+          <td jhiTranslate="{{ 'jdrhelperApp.Race.' + player.race }}">{{ player.race }}</td>
+          <td jhiTranslate="{{ 'jdrhelperApp.Profession.' + player.profession }}">{{ player.profession }}</td>
           <td>
             <a *ngIf="player.picture" (click)="openFile(player.picture, player.pictureContentType)">
               <img [src]="'data:' + player.pictureContentType + ';base64,' + player.picture" style="max-height: 30px" alt="player image" />

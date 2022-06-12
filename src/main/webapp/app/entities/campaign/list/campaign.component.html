@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="CampaignHeading">
-    <span jhiTranslate="witcherhelperApp.campaign.home.title">Campaigns</span>
+    <span jhiTranslate="jdrhelperApp.campaign.home.title">Campaigns</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="witcherhelperApp.campaign.home.refreshListLabel">Refresh List</span>
+        <span jhiTranslate="jdrhelperApp.campaign.home.refreshListLabel">Refresh List</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/campaign/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="witcherhelperApp.campaign.home.createLabel"> Create a new Campaign </span>
+        <span jhiTranslate="jdrhelperApp.campaign.home.createLabel"> Create a new Campaign </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="campaigns?.length === 0">
-    <span jhiTranslate="witcherhelperApp.campaign.home.notFound">No campaigns found</span>
+    <span jhiTranslate="jdrhelperApp.campaign.home.notFound">No campaigns found</span>
   </div>
 
   <div class="table-responsive" id="entities" *ngIf="campaigns && campaigns.length > 0">
@@ -33,9 +33,7 @@
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
           <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="name">
-            <span jhiTranslate="witcherhelperApp.campaign.name">Name</span> <fa-icon icon="sort"></fa-icon>
-          </th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="jdrhelperApp.campaign.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col"></th>
         </tr>
       </thead>

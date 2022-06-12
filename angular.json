@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "witcherhelper": {
+    "jdrhelper": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -89,15 +89,15 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "witcherhelper:build:development",
+            "browserTarget": "jdrhelper:build:development",
             "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "witcherhelper:build:production"
+              "browserTarget": "jdrhelper:build:production"
             },
             "development": {
-              "browserTarget": "witcherhelper:build:development"
+              "browserTarget": "jdrhelper:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -111,7 +111,7 @@
       }
     }
   },
-  "defaultProject": "witcherhelper",
+  "defaultProject": "jdrhelper",
   "cli": {
     "packageManager": "npm"
   }

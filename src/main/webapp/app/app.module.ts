@@ -16,7 +16,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { EntityRoutingModule } from './entities/entity-routing.module';
-import { WitcherhelperAppMapModule } from './map/map.module';
+import { JDRhelperAppMapModule } from './map/map.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { fontAwesomeIcons, rpgIcons } from './config/font-awesome-icons';
@@ -31,6 +31,7 @@ import { ErrorComponent } from './layouts/error/error.component';
 import { RpgAwesomeIconsRegistry } from '@triangular/rpg-awesome-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
+import { JDRhelperAppFalloutDicesModule } from './fallout-dices/fallout-dices.module';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { MessageService } from 'primeng/api';
     SharedModule,
     HomeModule,
     BrowserAnimationsModule,
-    WitcherhelperAppMapModule,
+    JDRhelperAppMapModule,
+    JDRhelperAppFalloutDicesModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EntityRoutingModule,
     AppRoutingModule,

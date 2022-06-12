@@ -1,0 +1,50 @@
+<div>
+  <jhi-alert-error></jhi-alert-error>
+  <p-toast></p-toast>
+</div>
+
+<div>
+  <h1>Dès de combat</h1>
+  <form>
+    <div class="form-inline">
+      <label for="combatDiceCount">Nombre de dès</label>
+      <input
+        type="number"
+        class="form-control mb-2 mr-sm-2 ml-2"
+        id="combatDiceCount"
+        name="combatDiceCount"
+        [(ngModel)]="combatDiceCount"
+      />
+      <button type="button" class="btn btn-primary mb-2" (click)="rollCombat()">Lancer</button>
+    </div>
+  </form>
+
+  <h4 *ngIf="combatDiceChildren.length > 0">Résultat</h4>
+  <ul>
+    <li *ngFor="let child of combatDiceChildren; let i = index" [attr.data-index]="i">
+      Dès #{{ i + 1 }} :
+      <img
+        [src]="'../../content/images/fallout-dice/side-' + child.getAttribute('value') + '.png'"
+        class="dice-side"
+        [title]="child.getAttribute('value')"
+        [alt]="child.getAttribute('value')"
+      />
+    </li>
+  </ul>
+</div>
+
+<div>
+  <h1>D20</h1>
+  <form>
+    <div class="form-inline">
+      <label for="d20Count">Nombre de dès</label>
+      <input type="number" class="form-control mb-2 mr-sm-2 ml-2" id="d20Count" name="d20Count" [(ngModel)]="d20Count" />
+      <button type="button" class="btn btn-primary mb-2" (click)="rollD20()">Lancer</button>
+    </div>
+  </form>
+
+  <h4 *ngIf="d20Results != null">Résultat : {{ d20Results.total }}</h4>
+  <ul>
+    <li *ngFor="let child of d20Children; let i = index" [attr.data-index]="i">Dès #{{ i + 1 }} : {{ child.getAttribute('value') }}</li>
+  </ul>
+</div>

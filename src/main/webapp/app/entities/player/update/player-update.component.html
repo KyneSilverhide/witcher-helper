@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-player-heading" data-cy="PlayerCreateUpdateHeading" jhiTranslate="witcherhelperApp.player.home.createOrEditLabel">
+      <h2 id="jhi-player-heading" data-cy="PlayerCreateUpdateHeading" jhiTranslate="jdrhelperApp.player.home.createOrEditLabel">
         Create or edit a Player
       </h2>
 
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.name" for="field_name">Name</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.name" for="field_name">Name</label>
           <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
           <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -24,10 +24,10 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.race" for="field_race">Race</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.race" for="field_race">Race</label>
           <select class="form-control" name="race" formControlName="race" id="field_race" data-cy="race">
-            <option [ngValue]="null">{{ 'witcherhelperApp.Race.null' | translate }}</option>
-            <option *ngFor="let race of raceValues" [value]="race">{{ 'witcherhelperApp.Race.' + race | translate }}</option>
+            <option [ngValue]="null">{{ 'jdrhelperApp.Race.null' | translate }}</option>
+            <option *ngFor="let race of raceValues" [value]="race">{{ 'jdrhelperApp.Race.' + race | translate }}</option>
           </select>
           <div *ngIf="editForm.get('race')!.invalid && (editForm.get('race')!.dirty || editForm.get('race')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('race')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -37,11 +37,11 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.profession" for="field_profession">Profession</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.profession" for="field_profession">Profession</label>
           <select class="form-control" name="profession" formControlName="profession" id="field_profession" data-cy="profession">
-            <option [ngValue]="null">{{ 'witcherhelperApp.Profession.null' | translate }}</option>
+            <option [ngValue]="null">{{ 'jdrhelperApp.Profession.null' | translate }}</option>
             <option *ngFor="let profession of professionValues" [value]="profession">
-              {{ 'witcherhelperApp.Profession.' + profession | translate }}
+              {{ 'jdrhelperApp.Profession.' + profession | translate }}
             </option>
           </select>
           <div *ngIf="editForm.get('profession')!.invalid && (editForm.get('profession')!.dirty || editForm.get('profession')!.touched)">
@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.picture" for="field_picture">Picture</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.picture" for="field_picture">Picture</label>
           <div>
             <img
               [src]="'data:' + editForm.get('pictureContentType')!.value + ';base64,' + editForm.get('picture')!.value"
@@ -94,7 +94,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.description" for="field_description">Description</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.description" for="field_description">Description</label>
           <textarea
             class="form-control"
             name="description"
@@ -105,7 +105,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.player.campaign" for="field_campaign">Campaign</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.player.campaign" for="field_campaign">Campaign</label>
           <select class="form-control" id="field_campaign" data-cy="campaign" name="campaign" formControlName="campaign">
             <option [ngValue]="null"></option>
             <option

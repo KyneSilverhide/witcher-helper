@@ -3,7 +3,7 @@
   <p-toast></p-toast>
 
   <div *ngIf="!selectedCampaign">
-    <h1 jhiTranslate="witcherhelperApp.campaign.home.title">Campaigns</h1>
+    <h1 jhiTranslate="jdrhelperApp.campaign.home.title">Campaigns</h1>
     <button *ngFor="let campaign of campaigns" type="button" class="btn btn-primary btn-lg" (click)="selectCampaign(campaign)">
       {{ campaign.name }}
     </button>

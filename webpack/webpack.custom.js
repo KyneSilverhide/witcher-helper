@@ -42,7 +42,7 @@ module.exports = async (config, options, targetOptions) => {
         extensions: ['js', 'ts'],
       }),
       new WebpackNotifierPlugin({
-        title: 'Witcherhelper',
+        title: 'JDRhelper',
         contentImage: path.join(__dirname, 'witcher-logo.png'),
       })
     );

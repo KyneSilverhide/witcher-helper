@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="player">
-      <h2 data-cy="playerDetailsHeading"><span jhiTranslate="witcherhelperApp.player.detail.title">Player</span></h2>
+      <h2 data-cy="playerDetailsHeading"><span jhiTranslate="jdrhelperApp.player.detail.title">Player</span></h2>
 
       <hr />
 
@@ -14,19 +14,19 @@
         <dd>
           <span>{{ player.id }}</span>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.name">Name</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.name">Name</span></dt>
         <dd>
           <span>{{ player.name }}</span>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.race">Race</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.race">Race</span></dt>
         <dd>
-          <span jhiTranslate="{{ 'witcherhelperApp.Race.' + player.race }}">{{ player.race }}</span>
+          <span jhiTranslate="{{ 'jdrhelperApp.Race.' + player.race }}">{{ player.race }}</span>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.profession">Profession</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.profession">Profession</span></dt>
         <dd>
-          <span jhiTranslate="{{ 'witcherhelperApp.Profession.' + player.profession }}">{{ player.profession }}</span>
+          <span jhiTranslate="{{ 'jdrhelperApp.Profession.' + player.profession }}">{{ player.profession }}</span>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.picture">Picture</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.picture">Picture</span></dt>
         <dd>
           <div *ngIf="player.picture">
             <a (click)="openFile(player.picture, player.pictureContentType)">
@@ -35,11 +35,11 @@
             {{ player.pictureContentType }}, {{ byteSize(player.picture) }}
           </div>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.description">Description</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.description">Description</span></dt>
         <dd>
           <span>{{ player.description }}</span>
         </dd>
-        <dt><span jhiTranslate="witcherhelperApp.player.campaign">Campaign</span></dt>
+        <dt><span jhiTranslate="jdrhelperApp.player.campaign">Campaign</span></dt>
         <dd>
           <div *ngIf="player.campaign">
             <a [routerLink]="['/campaign', player.campaign?.id, 'view']">{{ player.campaign?.name }}</a>

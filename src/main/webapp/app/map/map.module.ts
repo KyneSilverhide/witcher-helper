@@ -14,4 +14,4 @@ import { AddEventDialogComponent } from './add-event-dialog/add-event-dialog.com
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class WitcherhelperAppMapModule {}
+export class JDRhelperAppMapModule {}

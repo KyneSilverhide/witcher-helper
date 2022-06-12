@@ -1,6 +1,6 @@
 package be.kyne;
 
-import be.kyne.WitcherhelperApp;
+import be.kyne.JDRhelperApp;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,6 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = WitcherhelperApp.class)
+@SpringBootTest(classes = JDRhelperApp.class)
 public @interface IntegrationTest {
 }

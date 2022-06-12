@@ -41,6 +41,7 @@ import {
   faScroll,
   faMapMarkedAlt,
   faMapMarkerAlt,
+  faDiceD20,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -101,6 +102,7 @@ export const fontAwesomeIcons = [
   faScroll,
   faMapMarkedAlt,
   faMapMarkerAlt,
+  faDiceD20,
   // jhipster-needle-add-icon-import
 ];
 

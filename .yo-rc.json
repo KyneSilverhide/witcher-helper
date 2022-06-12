@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-    "baseName": "witcherhelper",
+    "baseName": "jdrhelper",
     "jhipsterVersion": "7.4.1",
     "skipUserManagement": false,
     "skipCheckLengthOfIdentifier": false,

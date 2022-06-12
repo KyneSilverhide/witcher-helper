@@ -20,18 +20,18 @@ import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-public class WitcherhelperApp {
+public class JDRhelperApp {
 
-    private static final Logger log = LoggerFactory.getLogger(WitcherhelperApp.class);
+    private static final Logger log = LoggerFactory.getLogger(JDRhelperApp.class);
 
     private final Environment env;
 
-    public WitcherhelperApp(Environment env) {
+    public JDRhelperApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes witcherhelper.
+     * Initializes jdrhelper.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -64,7 +64,7 @@ public class WitcherhelperApp {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(WitcherhelperApp.class);
+        SpringApplication app = new SpringApplication(JDRhelperApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

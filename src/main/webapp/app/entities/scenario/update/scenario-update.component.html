@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-scenario-heading" data-cy="ScenarioCreateUpdateHeading" jhiTranslate="witcherhelperApp.scenario.home.createOrEditLabel">
+      <h2 id="jhi-scenario-heading" data-cy="ScenarioCreateUpdateHeading" jhiTranslate="jdrhelperApp.scenario.home.createOrEditLabel">
         Create or edit a Scenario
       </h2>
 
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.title" for="field_title">Title</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.title" for="field_title">Title</label>
           <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
           <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.description" for="field_description">Description</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.description" for="field_description">Description</label>
           <textarea
             class="form-control"
             name="description"
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.mapCoords" for="field_mapCoords">Map Coords</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.mapCoords" for="field_mapCoords">Map Coords</label>
           <input type="text" class="form-control" name="mapCoords" id="field_mapCoords" data-cy="mapCoords" formControlName="mapCoords" />
           <div *ngIf="editForm.get('mapCoords')!.invalid && (editForm.get('mapCoords')!.dirty || editForm.get('mapCoords')!.touched)">
             <small
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.date" for="field_date">Date</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.date" for="field_date">Date</label>
           <div class="input-group">
             <input
               id="field_date"
@@ -68,7 +68,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.mapIcon">Map Icon</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.mapIcon">Map Icon</label>
 
           <span class="mapIcons" *ngFor="let icon of rpgIcons">
             <input type="radio" [id]="icon.name" [value]="icon.name" formControlName="mapIcon" />
@@ -87,7 +87,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="witcherhelperApp.scenario.campaign" for="field_campaign">Campaign</label>
+          <label class="form-control-label" jhiTranslate="jdrhelperApp.scenario.campaign" for="field_campaign">Campaign</label>
           <select class="form-control" id="field_campaign" data-cy="campaign" name="campaign" formControlName="campaign">
             <option [ngValue]="null"></option>
             <option
@@ -100,7 +100,7 @@
         </div>
 
         <div class="form-group">
-          <label jhiTranslate="witcherhelperApp.scenario.players" for="field_players">Players</label>
+          <label jhiTranslate="jdrhelperApp.scenario.players" for="field_players">Players</label>
           <select class="form-control" id="field_players" data-cy="players" multiple name="players" formControlName="players">
             <option
               [ngValue]="getSelectedPlayer(playerOption, editForm.get('players')!.value)"
